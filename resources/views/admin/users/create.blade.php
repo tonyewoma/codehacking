@@ -34,6 +34,9 @@
 
     {!! Form::close() !!}
 
-    @include('includes.form_error')
+    <div class="row">
+        @include('includes.form_error')
+    </div>
+
 
 @stop
