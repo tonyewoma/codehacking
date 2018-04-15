@@ -24,12 +24,34 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
+    //Role Belongs to User
     public function role(){
         return $this->belongsTo('App\Role');
     }
 
+    //Photo Belongs to User
     public  function photo(){
         return $this->belongsTo('App\Photo');
+    }
+
+
+//    public function setPasswordAttribute($password){
+//
+//        if(!empty($password)){
+//
+//            $this->attributes['password'] = bcrypt($password);
+//
+//        }
+//
+//        $this->attributes['password'] = $password;
+//
+//    }
+
+    //Method that detect if the user is administrator or not
+    public function isAdmin(){
+        if ($this->role->name == "administrator" && $this->is_active == 1 ){
+            return true;
+        }
+        return false;
     }
 }
